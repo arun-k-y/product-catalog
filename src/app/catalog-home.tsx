@@ -98,16 +98,6 @@ export default function CatalogHome({ sections, totalItems }: Props) {
               onChange={(e) => setQuery(e.target.value)}
               autoComplete="off"
             />
-            {query ? (
-              <button
-                type="button"
-                className={styles.searchClear}
-                onClick={() => setQuery("")}
-                aria-label="Clear search"
-              >
-                Clear
-              </button>
-            ) : null}
           </div>
         </div>
 
@@ -250,19 +240,17 @@ export default function CatalogHome({ sections, totalItems }: Props) {
                     </div>
                     <div className={styles.cardBody}>
                       <span className={styles.cardTitle}>{item.itemname}</span>
-                      {chips.length > 0 ? (
-                        <div className={styles.chips}>
-                          {chips.map((p) => (
-                            <span
-                              key={`${item.slug}-${p.label}`}
-                              className={styles.chip}
-                              title={`${p.label}: ${p.value}`}
-                            >
-                              {p.label}: {p.value}
-                            </span>
-                          ))}
-                        </div>
-                      ) : null}
+                      <div className={styles.chips}>
+                        {chips.map((p) => (
+                          <span
+                            key={`${item.slug}-${p.label}`}
+                            className={styles.chip}
+                            title={`${p.label}: ${p.value}`}
+                          >
+                            {p.label}: {p.value}
+                          </span>
+                        ))}
+                      </div>
                       <span className={styles.cta}>View details</span>
                     </div>
                   </Link>
