@@ -1,26 +1,39 @@
 :root {
-  --background: #f6f7f9;
-  --foreground: #141820;
+  --background: #f3f1f9;
+  --foreground: #12101a;
   --surface: #ffffff;
   --card: #ffffff;
-  --muted: #e8eaef;
-  --border: #d5dae3;
-  --accent: #0d6b6b;
-  --accent-text: #0a5555;
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --muted: #ebe8f3;
+  --border: #d8d3e6;
+  --accent: #5b4fd6;
+  --accent-text: #4338ca;
+  --accent-glow: color-mix(in srgb, var(--accent) 28%, transparent);
+  --shadow-sm: 0 1px 2px rgb(18 16 26 / 0.05);
+  --shadow-md: 0 8px 28px rgb(67 56 202 / 0.09);
+  --shadow-lg: 0 20px 50px rgb(67 56 202 / 0.14);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --font-sans: var(--font-ui), system-ui, sans-serif;
+  --font-heading: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-mono-loaded), ui-monospace, "Cascadia Code", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0c0e12;
-    --foreground: #eef0f4;
-    --surface: #141820;
-    --card: #161b24;
-    --muted: #252b36;
-    --border: #343c4a;
-    --accent: #3ec9c9;
-    --accent-text: #7ae8e8;
+    --background: #0c0a10;
+    --foreground: #f4f2fa;
+    --surface: #16131f;
+    --card: #1a1724;
+    --muted: #262232;
+    --border: #3a3548;
+    --accent: #9d8df7;
+    --accent-text: #c4b8fc;
+    --accent-glow: color-mix(in srgb, var(--accent) 22%, transparent);
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.35);
+    --shadow-md: 0 10px 40px rgb(0 0 0 / 0.45);
+    --shadow-lg: 0 24px 56px rgb(0 0 0 / 0.55);
   }
 }
 
@@ -39,10 +52,22 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background);
+  background-image: radial-gradient(
+      ellipse 100% 80% at 100% -20%,
+      var(--accent-glow),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 0% 100%,
+      color-mix(in srgb, var(--accent) 12%, transparent),
+      transparent 50%
+    );
+  background-attachment: fixed;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -59,5 +84,11 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    background-attachment: scroll;
   }
 }
